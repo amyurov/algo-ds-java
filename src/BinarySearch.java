@@ -15,19 +15,20 @@ public class BinarySearch {
         }
         int[] array = Arrays.stream(ordArray).mapToInt(o -> o).distinct().sorted().toArray();
         System.out.println(Arrays.toString(array));
-        Integer[] arr = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33};
+        Integer[] arr = new Integer[]{0, 1, 2, 4, 5, 6, 7, 9, 0, 0};
 
         // BiSearch
         int value = 8;
         int lowBound = 0;
-        int upBound = array.length - 1;
+        int upBound = arr.length - 1;
         int steps = 1;
+        int currIn = 0;
         while (lowBound <= upBound) {
-            int currIn = (upBound + lowBound) / 2;
-            if (value == array[currIn]) {
+            currIn = (upBound + lowBound) / 2;
+            if (value == arr[currIn]) {
                 System.out.printf("index:%d, steps:%d %n", currIn, steps);
                 break;
-            } else if (value > array[currIn]) {
+            } else if (value > arr[currIn]) {
                 lowBound = currIn + 1;
                 steps++;
             } else {
@@ -35,6 +36,7 @@ public class BinarySearch {
                 steps++;
             }
         }
+        System.out.println("nearest: " + currIn);
         System.out.printf("index:not found, steps:%d %n", steps);
     }
 }

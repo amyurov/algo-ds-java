@@ -1,4 +1,5 @@
 import Arrays.Array;
+import Arrays.OrderedArray;
 import Arrays.SimpleArray;
 import Arrays.SimpleArrayNoDoubles;
 
@@ -8,18 +9,21 @@ public class Main {
     public static void main(String[] args) {
 
         int maxCapacity = 16;
-        SimpleArray arr = new SimpleArrayNoDoubles(maxCapacity);
-        arr.print();
+        OrderedArray ordArr = new OrderedArray(maxCapacity);
 
-        for (int i = 0; i < 10; i++) {
-            arr.insert(i + 10);
-        }
-        arr.print();
-        arr.insert(333);
-        arr.print();
-        arr.insert(14);
-        System.out.println(arr.find(15));
-        arr.delete(14);
-        arr.print();
+        Random random = new Random();
+//        for (int i = 0; i <12; i++) {
+//            ordArr.insert(random.nextInt(20));
+//            ordArr.print();
+//        }
+
+        ordArr.insert(5);
+        ordArr.print();
+        ordArr.insert(15);
+        ordArr.print();
+        ordArr.insert(4);
+        ordArr.print();
+        ordArr.insert(27);
+        ordArr.print();
     }
 }
