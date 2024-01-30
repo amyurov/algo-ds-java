@@ -1,6 +1,6 @@
 package Arrays;
 
-public class SimpleArray implements Array{
+public class SimpleArray implements Array<Integer>{
     protected Integer[] array;
     protected int elemCount;
 
