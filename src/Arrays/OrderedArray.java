@@ -1,6 +1,6 @@
 package Arrays;
 
-public class OrderedArray implements Array {
+public class OrderedArray implements Array<Integer> {
 
     protected Integer[] array;
     protected int elemCount;
@@ -12,7 +12,7 @@ public class OrderedArray implements Array {
 
 
     @Override
-    public void insert(int value) {
+    public void insert(Integer value) {
         if (elemCount != array.length) {
             int insertIndex = find(value);
             if (insertIndex != -1) {
@@ -28,7 +28,7 @@ public class OrderedArray implements Array {
     }
 
     @Override
-    public int find(int value) {
+    public int find(Integer value) {
         System.out.println("Finding value: " + value);
         int lowBound = 0;
         int upBound = elemCount - 1;
@@ -67,7 +67,7 @@ public class OrderedArray implements Array {
     }
 
     @Override
-    public void delete(int value) {
+    public void delete(Integer value) {
         System.out.println("deleting value " + value);
         int indexToDel = find(value);
         if (indexToDel == -1) {
