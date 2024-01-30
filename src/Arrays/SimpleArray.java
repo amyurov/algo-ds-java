@@ -67,4 +67,15 @@ public class SimpleArray implements Array{
         }
         System.out.printf("Shifting status: success with %d steps %n", steps);
     }
+
+    public int removeMax() {
+        int currVal=array[0];
+        for (int i = 1; i < elemCount; i++) {
+            if (currVal < array[i]) {
+                currVal = array[i];
+            }
+        }
+        delete(currVal);
+        return currVal;
+    }
 }

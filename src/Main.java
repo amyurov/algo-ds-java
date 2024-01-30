@@ -11,15 +11,16 @@ public class Main {
         SimpleArray arr = new SimpleArrayNoDoubles(maxCapacity);
         arr.print();
 
-        for (int i = 0; i < 10; i++) {
-            arr.insert(i + 10);
-        }
+        arr.insert(10);
+        arr.insert(15);
+        arr.insert(25);
+        arr.insert(11);
+        arr.insert(12);
+        arr.insert(20);
+//        arr.insert(31);
+
         arr.print();
-        arr.insert(333);
-        arr.print();
-        arr.insert(14);
-        System.out.println(arr.find(15));
-        arr.delete(14);
+        System.out.println(arr.removeMax());
         arr.print();
     }
 }
