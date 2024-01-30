@@ -22,7 +22,7 @@ public class SimpleArray implements Array{
     }
 
     // Insert
-    public void insert(int value) {
+    public void insert(Integer value) {
         if (elemCount == array.length) {
             System.out.println("Array is full");
         } else {
@@ -32,7 +32,7 @@ public class SimpleArray implements Array{
     }
 
     // Find
-    public int find(int value) {
+    public int find(Integer value) {
         for (int i = 0; i < elemCount; i++) {
             if (array[i] == value) {
                 System.out.printf("iter:%d Found %d at index %d \n", i + 1, value, i);
@@ -44,7 +44,10 @@ public class SimpleArray implements Array{
     }
 
     // Delete
-    public void delete(int value) {
+    public void delete(Integer value) {
+        if (value == null) {
+            return;
+        }
         System.out.println("Finding " + value + " to delete...");
         int rmIndex = find(value);
         if (rmIndex == -1) {
@@ -68,7 +71,10 @@ public class SimpleArray implements Array{
         System.out.printf("Shifting status: success with %d steps %n", steps);
     }
 
-    public int removeMax() {
+    public Integer removeMax() {
+        if (elemCount == 0) {
+            return null;
+        }
         int currVal=array[0];
         for (int i = 1; i < elemCount; i++) {
             if (currVal < array[i]) {

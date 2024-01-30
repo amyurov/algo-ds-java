@@ -1,8 +1,8 @@
 package Arrays;
 
 public interface Array {
-    void insert(int value);
-    int find(int value);
-    void delete(int value);
+    void insert(Integer value);
+    int find(Integer value);
+    void delete(Integer value);
 
 }

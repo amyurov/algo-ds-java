@@ -7,7 +7,7 @@ public class SimpleArrayNoDoubles extends SimpleArray {
     }
 
     @Override
-    public void insert(int value) {
+    public void insert(Integer value) {
         if (elemCount == array.length) {
             System.out.println("Array is full");
         } else if (find(value) != -1) {
