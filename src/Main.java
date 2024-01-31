@@ -8,24 +8,16 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        int maxCapacity = 16;
-        SimpleArray arr = new SimpleArray(maxCapacity);
-        SimpleArray ordSimpleArr = new SimpleArray(maxCapacity);
-        arr.print();
+        OrderedArray ordArr = new OrderedArray(16);
 
-        arr.insert(10);
-        arr.insert(15);
-        arr.insert(25);
-        arr.insert(11);
-        arr.insert(12);
-        arr.insert(20);
-        arr.insert(31);
-
-        for (int i = 0; i <maxCapacity; i++) {
-            ordSimpleArr.insert(arr.removeMax());
-        }
-
-        arr.print();
-        ordSimpleArr.print();
+        ordArr.print();
+        ordArr.insert(5);
+        ordArr.insert(8);
+        ordArr.insert(12);
+        ordArr.insert(3);
+//        ordArr.insert(7);
+//        ordArr.insert(15);
+//        ordArr.insert(11);
+        ordArr.print();
     }
 }

@@ -13,16 +13,39 @@ public class OrderedArray implements Array<Integer> {
 
     @Override
     public void insert(Integer value) {
-        if (elemCount != array.length) {
-            int insertIndex = find(value);
-            if (insertIndex != -1) {
-                System.out.println("No doubles");
+        boolean isFull = elemCount == array.length;
+        boolean isEmpty = elemCount == 0;
+        if (!isFull) {
+            if (isEmpty) {
+                array[0] = value;
+                elemCount++;
+                return;
+            }
+            if (checkBound(value) != -1) {
+                int insertIndex = checkBound(value);
+                if (insertIndex == 0) {
+                    forwardShift(0);
+                    array[0] = value;
+                    elemCount++;
+                    return;
+                } else {
+                    array[insertIndex] =  value;
+                }
+            }
+
+            int insertIndex = biSearch(value);
+            if (array[insertIndex].equals(value)) {
+                System.out.println("doubles");
+                return;
+            } else if (value < array[insertIndex]) {
+                forwardShift(insertIndex - 1);
+                array[insertIndex - 1] = value;
+                elemCount++;
             } else {
-                insertIndex = findInsertIndex(value);
-                array[insertIndex] = value;
+                forwardShift(insertIndex + 1);
+                array[insertIndex + 1] = value;
                 elemCount++;
             }
-            return;
         }
         System.out.println("Array is full");
     }
@@ -30,40 +53,8 @@ public class OrderedArray implements Array<Integer> {
     @Override
     public int find(Integer value) {
         System.out.println("Finding value: " + value);
-        int lowBound = 0;
-        int upBound = elemCount - 1;
-        while (lowBound <= upBound) {
-            int currIn = (lowBound + upBound) / 2;
-            if (value == array[currIn]) {
-                return currIn;
-            } else if (value > array[currIn]) {
-                lowBound = currIn + 1;
-            } else {
-                upBound = currIn - 1;
-            }
-        }
-        System.out.println("Value: " + value + " not found");
-        return -1;
-    }
-
-    private int findInsertIndex(int value) {
-        System.out.println("Finding index to insert...");
-        if (elemCount == 0 || (elemCount == 1 && array[elemCount - 1] < value)) {
-            return elemCount;
-        }
-
-        int lowBound = 0;
-        int upBound = elemCount - 1;
-        while ((upBound - lowBound) != 1) {
-            int currIn = (lowBound + upBound) / 2;
-            if (value > array[currIn]) {
-                lowBound = currIn + 1;
-            } else {
-                upBound = currIn - 1;
-            }
-        }
-        forwardShift(upBound);
-        return upBound;
+        int mostLikelyIndex = biSearch(value);
+        return array[mostLikelyIndex].equals(value) ? mostLikelyIndex : -1;
     }
 
     @Override
@@ -76,6 +67,32 @@ public class OrderedArray implements Array<Integer> {
             array[indexToDel] = null;
             backShift(indexToDel);
         }
+    }
+
+    private int biSearch(Integer value) {
+        int low = 0;
+        int high = elemCount - 1;
+        int currIn = 0;
+        while (low != high) {
+            currIn = (low + high) / 2;
+            if (value.equals(array[currIn])) {
+                return currIn;
+            } else if (value > array[currIn]) {
+                low = ++currIn;
+            } else {
+                high = --currIn;
+            }
+        }
+        return currIn;
+    }
+
+    private int checkBound(Integer value) {
+        if (value < array[0]) {
+            return 0;
+        } else if (value > array[elemCount - 1]) {
+            return elemCount;
+        }
+        return -1;
     }
 
     private void forwardShift(int insertIndex) {
