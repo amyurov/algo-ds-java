@@ -51,7 +51,7 @@ public class OrderedArray implements Array<Integer> {
     }
 
     @Override
-    public int find(Integer value) {
+    public Integer find(Integer value) {
         System.out.println("Finding value: " + value);
         int mostLikelyIndex = biSearch(value);
         return array[mostLikelyIndex].equals(value) ? mostLikelyIndex : -1;
