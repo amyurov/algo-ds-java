@@ -10,6 +10,16 @@ public class OrderedArray implements Array<Integer> {
         this.elemCount = 0;
     }
 
+    public void simpleInsert(Integer value) {
+        boolean isEmpty = elemCount == 0;
+        if (isEmpty) {
+            array[0] = value;
+            elemCount++;
+            return;
+        }
+        array[elemCount]=value;
+        elemCount++;
+    }
 
     @Override
     public void insert(Integer value) {
@@ -65,14 +75,14 @@ public class OrderedArray implements Array<Integer> {
         int low = 0;
         int high = elemCount - 1;
         int currIn = 0;
-        while (low != high) {
+        while (low <= high) {
             currIn = (low + high) / 2;
-            if (value.equals(array[currIn]) || currIn + 1 > elemCount || currIn - 1 < 0) {
+            if (value.equals(array[currIn]))  {
                 return currIn;
             } else if (value > array[currIn]) {
-                low = ++currIn;
+                low = currIn + 1;
             } else {
-                high = --currIn;
+                high = currIn - 1;
             }
         }
         return currIn;

@@ -1,10 +1,12 @@
 import Arrays.OrderedArray;
 import Arrays.SimpleArray;
 
+import java.util.Spliterator;
+
 public class Main {
     public static void main(String[] args) {
 
-        int cap = 10;
+        int cap = 15;
 //        SimpleArray unordered = new SimpleArray(cap);
 //        SimpleArray ordered = new SimpleArray(cap);
 //
@@ -29,16 +31,20 @@ public class Main {
 
         OrderedArray orderedArray = new OrderedArray(cap);
 
-        orderedArray.insert(0);
+        orderedArray.insert(5);
+        orderedArray.insert(3);
+        orderedArray.insert(8);
+        orderedArray.insert(6);
+        orderedArray.insert(9);
         orderedArray.insert(2);
         orderedArray.insert(4);
-        orderedArray.insert(6);
-        orderedArray.insert(8);
-        orderedArray.insert(10);
-        orderedArray.insert(12);
-        orderedArray.insert(14);
+        orderedArray.insert(1);
+        orderedArray.insert(7);
+        orderedArray.insert(0);
+        orderedArray.print();
 
-        System.out.println(orderedArray.biSearch(11));
+        System.out.println(orderedArray.find(4));
+        System.out.println(orderedArray.find(20));
 
 
     }
