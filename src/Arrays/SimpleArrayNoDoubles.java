@@ -10,7 +10,7 @@ public class SimpleArrayNoDoubles extends SimpleArray {
     public void insert(Integer value) {
         if (elemCount == array.length) {
             System.out.println("Array is full");
-        } else if (find(value) != -1) {
+        } else if (find(value) != null) {
             System.out.println("No doubles");
         } else {
             array[elemCount] = value;
