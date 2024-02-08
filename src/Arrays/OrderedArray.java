@@ -109,4 +109,17 @@ public class OrderedArray implements Array<Integer> {
         System.out.println();
     }
 
+    public static OrderedArray merge(OrderedArray arr1, OrderedArray arr2) {
+        boolean canMerge = arr1.array.length - arr1.elemCount >= arr2.elemCount;
+        if (!canMerge) {
+            System.out.println("don't have enough free space for merge");
+            return null;
+        }
+
+        for (int i = 0; i < arr2.elemCount; i++) {
+            arr1.insert(arr2.array[i]);
+        }
+        return arr1;
+    }
+
 }

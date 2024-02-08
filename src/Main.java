@@ -1,6 +1,7 @@
 import Arrays.OrderedArray;
 import Arrays.SimpleArray;
 
+import java.util.Random;
 import java.util.Spliterator;
 
 public class Main {
@@ -29,23 +30,36 @@ public class Main {
 //
 //        ordered.print();
 
-        OrderedArray orderedArray = new OrderedArray(cap);
+//        OrderedArray orderedArray = new OrderedArray(cap);
+//
+//        orderedArray.insert(5);
+//        orderedArray.insert(3);
+//        orderedArray.insert(8);
+//        orderedArray.insert(6);
+//        orderedArray.insert(9);
+//        orderedArray.insert(2);
+//        orderedArray.insert(4);
+//        orderedArray.insert(1);
+//        orderedArray.insert(7);
+//        orderedArray.insert(0);
+//        orderedArray.print();
+//
+//        System.out.println(orderedArray.find(4));
+//        System.out.println(orderedArray.find(20));
 
-        orderedArray.insert(5);
-        orderedArray.insert(3);
-        orderedArray.insert(8);
-        orderedArray.insert(6);
-        orderedArray.insert(9);
-        orderedArray.insert(2);
-        orderedArray.insert(4);
-        orderedArray.insert(1);
-        orderedArray.insert(7);
-        orderedArray.insert(0);
-        orderedArray.print();
+        OrderedArray arrToM1 = new OrderedArray(15);
+        OrderedArray arrToM2 = new OrderedArray(12);
 
-        System.out.println(orderedArray.find(4));
-        System.out.println(orderedArray.find(20));
+        Random random = new Random();
+        for (int i = 0; i < 7; i++) {
+            arrToM1.insert(random.nextInt(30));
+            arrToM2.insert(random.nextInt(30));
+        }
 
+        arrToM1.print();
+        arrToM2.print();
+
+        OrderedArray.merge(arrToM1, arrToM2).print();
 
     }
 }
